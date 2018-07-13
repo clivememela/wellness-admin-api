@@ -1,4 +1,4 @@
-# wellness-administration-web
+# wellness-administration-api
 
 <h1>Wellness Admin Web Application API</h1>
 
