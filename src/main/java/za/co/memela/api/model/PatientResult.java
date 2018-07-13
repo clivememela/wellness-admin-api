@@ -1,11 +1,15 @@
 package za.co.memela.api.model;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,15 +23,26 @@ public class PatientResult {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	private String name;
 	private String surname;
 	private String email;
-	private Integer height;
-	private Integer weight;
-	private Integer sbp;
-	private Integer dbp;
+	private int height;
+	private int weight;
+	private int sbp;
+	private int dbp;
 	private String capturedby;
-	private LocalDateTime capturedon;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date capturedon;
+
+	@PrePersist
+	private void prePersist() {
+		capturedon = new Date();
+	}
+
+	@PreUpdate
+	private void preUpdate() {
+		capturedon = new Date();
+	}
 
 }

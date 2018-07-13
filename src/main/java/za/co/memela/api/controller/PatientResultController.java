@@ -15,16 +15,17 @@ import za.co.memela.api.repository.PatientResultRepository;
 public class PatientResultController {
 
 	@Autowired
-	PatientResultRepository patientResultRepository;
+	private PatientResultRepository patientResultRepository;
 
 	@PostMapping("/capturePatientResult")
-	public String saveEmployee(@RequestBody PatientResult patientResult) {
+	public String capturePatientResult(
+			@RequestBody PatientResult patientResult) {
 		patientResultRepository.save(patientResult);
 		return "PatientResult saved..";
 	}
 
 	@GetMapping("/getAllPatientResults")
-	public List<PatientResult> getAll() {
+	public List<PatientResult> getAllPatientResults() {
 		return patientResultRepository.findAll();
 	}
 }
