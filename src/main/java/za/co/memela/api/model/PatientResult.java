@@ -33,16 +33,16 @@ public class PatientResult {
 	private int dbp;
 	private String capturedby;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date capturedon;
+	private Date capturedate;
 
 	@PrePersist
 	private void prePersist() {
-		capturedon = new Date();
+		capturedate = new Date();
 	}
 
 	@PreUpdate
 	private void preUpdate() {
-		capturedon = new Date();
+		capturedate = new Date();
 	}
 
 }

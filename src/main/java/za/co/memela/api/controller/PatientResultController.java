@@ -18,10 +18,9 @@ public class PatientResultController {
 	private PatientResultRepository patientResultRepository;
 
 	@PostMapping("/capturePatientResult")
-	public String capturePatientResult(
+	public PatientResult capturePatientResult(
 			@RequestBody PatientResult patientResult) {
-		patientResultRepository.save(patientResult);
-		return "PatientResult saved..";
+		return patientResultRepository.save(patientResult);
 	}
 
 	@GetMapping("/getAllPatientResults")
